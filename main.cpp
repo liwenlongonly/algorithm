@@ -3,6 +3,8 @@
 #include "sort/BubbleSort.cpp"
 #include "sort/QuickSort.cpp"
 #include "sort/MergeSort.cpp"
+#include "sort/ShellSort.cpp"
+#include "sort/SelectionSort.cpp"
 
 int main() {
     const int data_len = 10;
@@ -25,6 +27,17 @@ int main() {
     std::cout << "Merge Sort satrt!" << std::endl;
     MergeSort<double > mergeSort;
     mergeSort.test(data4, data_len);
+
+    float data5[data_len] = {0.2, 43.5, 35.3, 35.4, 1.9, 87.0, 99.9, 67.5, 78.8, 100.1};
+    std::cout << "Shell Sort satrt!" << std::endl;
+    ShellSort<float> shellSort;
+    shellSort.test(data5, data_len);
+
+    float data6[data_len] = {0.2, 43.5, 35.3, 35.4, 1.9, 87.0, 99.9, 67.5, 78.8, 100.1};
+    std::cout << "Selection Sort satrt!" << std::endl;
+    SelectionSort<float > selectionSort;
+    selectionSort.test(data6, data_len);
+
 
     return 0;
 }

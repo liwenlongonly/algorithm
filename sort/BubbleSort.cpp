@@ -12,10 +12,10 @@ void BubbleSort<DataType>::sort(DataType data[], int n){
         flag = 0;
         for (j = 0; j+1 < n; j++) {
             if(data[j] > data[j+1]){
-                SortBase<DataType>::swap(data+j, data+j+1);
+                SortBase<DataType>::swap(&data[j], &data[j+1]);
                 flag = 1;
             }
         }
-    i++;
-    }while(i<n && flag == 1);
+        i++;
+    }while(i < n && flag == 1);
 }

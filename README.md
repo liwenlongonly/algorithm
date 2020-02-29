@@ -4,3 +4,5 @@
 * BubbleSort
 * QuickSort
 * MergeSort
+* ShellSort
+* SelectionSort
