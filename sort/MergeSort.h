@@ -11,7 +11,11 @@
 template <class DataType>
 class MergeSort: public SortBase<DataType> {
 public:
+
     virtual void sort(DataType d[], int n);
+
+private:
+    void merge(DataType a[], DataType b[], DataType c[], int a_len, int b_len);
 };
 
 
