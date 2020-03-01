@@ -7,6 +7,8 @@
 #include "sort/SelectionSort.cpp"
 #include "sort/HeapSort.cpp"
 #include "sort/CountingSort.cpp"
+#include "sort/RadixSort.cpp"
+#include "sort/BucketSort.cpp"
 
 int main() {
     const int data_len = 10;
@@ -49,6 +51,16 @@ int main() {
     std::cout << "Counting Sort satrt!" << std::endl;
     CountingSort<int > countingSort;
     countingSort.test(data8, data_len);
+
+    int data9[data_len] = {2, 43, 35, 35, 1, 87, 99, 67, 78, 100};
+    std::cout << "Radix Sort satrt!" << std::endl;
+    RadixSort<int > radixSort;
+    radixSort.test(data9, data_len);
+
+    int data10[data_len] = {2, 43, 35, 35, 1, 87, 99, 67, 78, 100};
+    std::cout << "Bucket Sort satrt!" << std::endl;
+    BucketSort<int > bucketSort;
+    bucketSort.test(data10, data_len);
 
     return 0;
 }
