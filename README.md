@@ -6,3 +6,5 @@
 * MergeSort
 * ShellSort
 * SelectionSort
+* HeapSort
+* CountingSort

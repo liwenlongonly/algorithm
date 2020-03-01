@@ -5,6 +5,8 @@
 #include "sort/MergeSort.cpp"
 #include "sort/ShellSort.cpp"
 #include "sort/SelectionSort.cpp"
+#include "sort/HeapSort.cpp"
+#include "sort/CountingSort.cpp"
 
 int main() {
     const int data_len = 10;
@@ -38,6 +40,16 @@ int main() {
     SelectionSort<float > selectionSort;
     selectionSort.test(data6, data_len);
 
+    float data7[data_len] = {0.2, 43.5, 35.3, 35.4, 1.9, 87.0, 99.9, 67.5, 78.8, 100.1};
+    std::cout << "Heap Sort satrt!" << std::endl;
+    HeapSort<float > heapSort;
+    heapSort.test(data7, data_len);
+
+    int data8[data_len] = {2, 43, 35, 35, 1, 87, 99, 67, 78, 100};
+    std::cout << "Counting Sort satrt!" << std::endl;
+    CountingSort<int > countingSort;
+    countingSort.test(data8, data_len);
 
     return 0;
 }
+
