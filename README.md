@@ -13,3 +13,7 @@
 | 1.8 CountingSort|   O(n)        |     O(n)        |    O(n)      |    O(n)     |
 | 1.9 RadixSort   |  O(d(n+w))    |     O(d(n+w))   |    O(d(n+w)) |    O(d(n+w))|
 | 1.10 BucketSort |   O(n)        |     O(n)        |    O(n)      |    O(n)     |
+
+O(1) < O(logn) < O(n) < O(nlogn) < O(n²) < O(n³) < O(2ⁿ) < O(n!)
+
+#### 2. Search

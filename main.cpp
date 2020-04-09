@@ -10,6 +10,8 @@
 #include "sort/RadixSort.cpp"
 #include "sort/BucketSort.cpp"
 
+#include "list/List.h"
+
 int main() {
     const int data_len = 10;
     int data1[data_len] = {0, 43, 35, 87, 1, 87, 99, 67, 78, 100};
@@ -61,6 +63,9 @@ int main() {
     std::cout << "Bucket Sort satrt!" << std::endl;
     BucketSort<int > bucketSort;
     bucketSort.test(data10, data_len);
+
+    List list;
+    list.test();
 
     return 0;
 }
