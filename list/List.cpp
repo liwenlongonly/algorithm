@@ -5,9 +5,9 @@
 #include "List.h"
 #include <iostream>
 
-ListNode::ListNode():
+ListNode::ListNode(int value):
 next{nullptr},
-value{0}{
+value{value}{
 
 }
 
@@ -32,6 +32,9 @@ void List::test() {
     list = reverseList(list);
     std::cout << "reverseList : ";
     printList(list);
+    std::cout << (hasLoop(list)?"has loop":"has not loop") << std::endl;
+    list = removeNthFromEnd(list, 3);
+    printList(list);
     freeList(list);
     list = nullptr;
     printList(list);
@@ -41,8 +44,7 @@ ListNode* List::createList(const int array[], const int num) {
     ListNode* head = nullptr;
     ListNode* tail = nullptr;
     for (int i = 0; i < num; ++i) {
-        ListNode * node = new (std::nothrow)ListNode();
-        node->value = array[i];
+        ListNode * node = new (std::nothrow)ListNode(array[i]);
         if(head == nullptr && i == 0){
             head = node;
         }
@@ -66,7 +68,7 @@ void List::printList(const ListNode *head) {
     std::cout << std::endl;
 }
 
-void List::freeList(const ListNode *head) {
+void List::freeList(ListNode *head) {
     ListNode *ptr = const_cast<ListNode*>(head);
 
     while (ptr != nullptr){
@@ -92,7 +94,7 @@ ListNode* List::middleNode(const ListNode *head) {
     return slow;
 }
 
-ListNode* List::reverseList(const ListNode *head) {
+ListNode* List::reverseList(ListNode *head) {
     if(head == nullptr || head->next == nullptr){
         return const_cast<ListNode*>(head);
     }
@@ -105,4 +107,47 @@ ListNode* List::reverseList(const ListNode *head) {
         node = tmp;
     }
     return newHead;
+}
+
+bool List::hasLoop(const ListNode *head) {
+    if(head == nullptr || head->next == nullptr){
+        return false;
+    }
+    ListNode *slow = const_cast<ListNode*>(head);
+    ListNode *fast = const_cast<ListNode*>(head);
+    while(fast != nullptr && fast->next != nullptr){
+        fast = fast->next->next;
+        slow = slow->next;
+        if(slow == fast){
+            return true;
+        }
+    }
+    return false;
+}
+
+ListNode* List::removeNthFromEnd(const ListNode *head, int n) {
+    if(head == NULL){
+        return const_cast<ListNode*>(head);
+    }
+    ListNode * dummy = new ListNode(0);
+    dummy->next = const_cast<ListNode*>(head);;
+    ListNode *pre = dummy;
+    ListNode *tmp = dummy;
+    for(int i = 0; i < n; ++i){
+        if(tmp->next){
+            tmp = tmp->next;
+        }else{
+            return dummy->next;
+        }
+    }
+    while(tmp->next != NULL){
+        pre = pre->next;
+        tmp = tmp->next;
+    }
+    tmp = pre->next->next;
+    delete pre->next;
+    pre->next = tmp;
+    ListNode * rHead = dummy->next;
+    delete dummy;
+    return rHead;
 }
