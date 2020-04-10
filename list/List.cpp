@@ -35,6 +35,8 @@ void List::test() {
     std::cout << (hasLoop(list)?"has loop":"has not loop") << std::endl;
     list = removeNthFromEnd(list, 3);
     printList(list);
+    list = rotateRight(list, 10);
+    printList(list);
     freeList(list);
     list = nullptr;
     printList(list);
@@ -126,7 +128,7 @@ bool List::hasLoop(const ListNode *head) {
 }
 
 ListNode* List::removeNthFromEnd(const ListNode *head, int n) {
-    if(head == NULL){
+    if(head == nullptr){
         return const_cast<ListNode*>(head);
     }
     ListNode * dummy = new ListNode(0);
@@ -150,4 +152,24 @@ ListNode* List::removeNthFromEnd(const ListNode *head, int n) {
     ListNode * rHead = dummy->next;
     delete dummy;
     return rHead;
+}
+
+ListNode* List::rotateRight(const ListNode* head, int k){
+    if(head == NULL){
+        return const_cast<ListNode*>(head);
+    }
+    ListNode *tmp = const_cast<ListNode*>(head);
+    ListNode *pre = const_cast<ListNode*>(head);
+    int num = 0;
+    while(tmp != NULL && tmp->next != NULL){
+        tmp = tmp->next;
+        ++num;
+    }
+    tmp->next = pre;
+    for(int i = 0; i < num-(k%(num+1)); ++i){
+        pre = pre->next;
+    }
+    ListNode *rhead = pre->next;
+    pre->next = NULL;
+    return rhead;
 }

@@ -28,8 +28,10 @@ private:
     ListNode* reverseList(ListNode *head);
     //判断是否有环
     bool hasLoop(const ListNode *head);
-    //删除倒数第n个元素,返回链表头指针,技巧使用假指针;
+    //删除倒数第n个元素，返回链表头指针，技巧使用假指针;
     ListNode* removeNthFromEnd(const ListNode* head, int n);
+    //给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
+    ListNode* rotateRight(const ListNode* head, int k);
 
 };
 
