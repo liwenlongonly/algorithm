@@ -5,6 +5,8 @@
 #ifndef ALGORITHM_LIST_H
 #define ALGORITHM_LIST_H
 
+#include <string>
+
 class ListNode{
 public:
     ListNode(int value);
@@ -33,6 +35,9 @@ private:
     //给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
     ListNode* rotateRight(const ListNode* head, int k);
 
+
+    bool check(char left, char right);
+    bool isValid(std::string s);
 };
 
 #endif //ALGORITHM_LIST_H
