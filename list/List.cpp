@@ -3,6 +3,7 @@
 //
 
 #include "List.h"
+#include <stack>
 #include <iostream>
 
 ListNode::ListNode(int value):
@@ -40,6 +41,7 @@ void List::test() {
     freeList(list);
     list = nullptr;
     printList(list);
+    std::cout <<"(())" << (isValid("(())")?"true":"false") << std::endl;
 }
 
 ListNode* List::createList(const int array[], const int num) {
@@ -172,4 +174,44 @@ ListNode* List::rotateRight(const ListNode* head, int k){
     ListNode *rhead = pre->next;
     pre->next = NULL;
     return rhead;
+}
+
+bool List::check(char left, char right) {
+    if(left == '('){
+        return right == ')'?true:false;
+    }else if(left == '['){
+        return right == ']'?true:false;
+    }else if(left == '{'){
+        return right == '}'?true:false;
+    }
+    return false;
+}
+
+bool List::isValid(std::string s) {
+    std::stack<char > stack;
+    char *head = const_cast<char *>(s.c_str());
+    bool flag = true;
+    for (int i = 0; i < s.length(); ++i) {
+        char tmp = head[i];
+        if(tmp == '(' || tmp == '[' || tmp == '{'){
+            stack.push(tmp);
+        } else{
+            if(stack.size() <= 0){
+                flag = false;
+                break;
+            }
+            char left = stack.top();
+            stack.pop();
+            if(!check(left, tmp)){
+                flag = false;
+                break;
+            }
+        }
+    }
+    if(flag){
+        if(!stack.empty()){
+            flag = false;
+        }
+    }
+    return flag;
 }
